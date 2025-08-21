@@ -1,0 +1,26 @@
+{
+  "name": "vue-mobile-2508",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "docker:build": "docker build -t vue-mobile-2508 .",
+    "docker:run": "docker run -p 3000:80 vue-mobile-2508",
+    "docker:dev": "docker-compose up vue-mobile-dev",
+    "docker:prod": "docker-compose up vue-mobile-prod",
+    "docker:nginx": "docker-compose up vue-mobile-nginx",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f vue-mobile-dev"
+  },
+  "dependencies": {
+    "vue": "^3.3.0",
+    "vue-router": "^4.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.3.0"
+  }
+}
