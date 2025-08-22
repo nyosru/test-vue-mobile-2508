@@ -38,7 +38,7 @@ services:
 
   # Nginx для production (альтернатива)
   vue-mobile-nginx:
-    image: nginx:alpine
+    image: dockerhub.timeweb.cloud/library/nginx:alpine
     container_name: vue-mobile-nginx
     ports:
       - "8080:80"
