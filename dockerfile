@@ -1,5 +1,5 @@
 # Базовый образ для сборки
-FROM dockerhub.timeweb.cloud/library/node:18-alpine as development
+FROM node:18-alpine as development
 
 WORKDIR /app
 
@@ -28,7 +28,7 @@ COPY --from=development /app ./
 RUN npm run build
 
 # Production стадия
-FROM dockerhub.timeweb.cloud/library/nginx:alpine as production-stage
+FROM nginx:alpine as production-stage
 
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
