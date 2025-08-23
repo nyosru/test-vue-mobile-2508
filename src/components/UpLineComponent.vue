@@ -3,7 +3,7 @@
     <div class="scroll-container">
       <div v-for="n in 10" :key="n" class="cell">
         <div>
-        верх линия
+        верх линия7
       <br/>
         инфа: {{ n }}
         </div>

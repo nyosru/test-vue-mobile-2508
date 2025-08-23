@@ -19,6 +19,7 @@ export default defineConfig({
         host: '0.0.0.0',
         port: 5173,
         strictPort: true, // Не меняет порт если занят
+        allowedHosts: true,  // ← разрешает все хосты
         watch: {
             usePolling: true
         }
