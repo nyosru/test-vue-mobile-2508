@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Development среда с hot reload
+  vue-mobile-dev:
+    build:
+      context: .
+      target: development
+    container_name: vue-mobile-dev
+    ports:
+      - "5173:5173"  # Vite dev server
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./dist:/app/dist
+    environment:
+      - NODE_ENV=development
+      - VITE_APP_NAME=vue-mobile-2508
+    command: npm run dev -- --host 0.0.0.0
+    stdin_open: true
+    tty: true
+    networks:
+      - vue-mobile-network
+
+##  # Production сборка
+#  vue-mobile-prod:
+#    build:
+#      context: .
+#      target: production-stage
+#    container_name: vue-mobile-prod
+#    ports:
+#      - "3000:80"  # Nginx порт
+#    environment:
+#      - NODE_ENV=production
+#    restart: unless-stopped
+#    networks:
+#      - vue-mobile-network
+#
+#  # Nginx для production (альтернатива)
+#  vue-mobile-nginx:
+#    image: nginx:alpine
+#    container_name: vue-mobile-nginx
+#    ports:
+#      - "8080:80"
+#    volumes:
+#      - ./dist:/usr/share/nginx/html
+#      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+#    depends_on:
+#      - vue-mobile-dev
+#    networks:
+#      - vue-mobile-network
+
+networks:
+  vue-mobile-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+  dist:
